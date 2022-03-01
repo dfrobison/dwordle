@@ -19,5 +19,8 @@ let dwordleReducer = Reducer<DwordleState, DwordleAction, DwordleEnvironment> { 
         case .backspace:
             state.backspace()
             return .none
+        case .newGame:
+            state.newGame()
+            return .none
     }
 }

@@ -9,4 +9,5 @@ enum DwordleAction: Equatable {
     case addLetter(Character)
     case evaluate
     case backspace
+    case newGame
 }

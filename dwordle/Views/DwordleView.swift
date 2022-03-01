@@ -29,7 +29,7 @@ struct DwordleView: View {
             }
             .frame(maxHeight: .infinity)
             Button("New Game") {
-               // start new game, to be implemented...
+                viewStore.send(.newGame)
             }
             .padding(8)
             HStack {
@@ -62,9 +62,9 @@ struct DwordleView: View {
 
 struct DwordleView_Previews: PreviewProvider {
     static var previews: some View {
-    DwordleView( store: Store(initialState: DwordleState(columns: 5, rows: 6),
-                 reducer: dwordleReducer,
-                 environment: DwordleEnvironment()))
+        DwordleView( store: Store(initialState: DwordleState(columns: 5, rows: 6),
+                                  reducer: dwordleReducer,
+                                  environment: DwordleEnvironment()))
     }
 }
 

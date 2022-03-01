@@ -14,17 +14,14 @@ struct DwordleState: Equatable {
     var column = 0
     var wordOfTheDay = "words"
     var words: Set<String> = []
-    var dwordleGrid: [[DwordleCell]]
+    var dwordleGrid: [[DwordleCell]] = [[]]
     var lost = false
     var solved = false
     
     init(columns: Int, rows: Int) {
         self.columns = columns
         self.rows = rows
-        self.dwordleGrid = Array(
-            repeating: .init(repeating: .init(), count: columns),
-            count: rows
-        )
+        newGame()
     }
     
     mutating func addLetter(_ letter: Character) {
@@ -69,5 +66,16 @@ struct DwordleState: Equatable {
         } else if row == rows - 1 {
             lost = true
         }
+    }
+    
+    mutating func newGame() {
+        row = 0
+        column = 0
+        lost = false
+        solved = false
+        self.dwordleGrid = Array(
+            repeating: .init(repeating: .init(), count: columns),
+            count: rows
+        )
     }
 }
