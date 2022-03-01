@@ -6,12 +6,17 @@
 //
 
 import SwiftUI
+import ComposableArchitecture
 
 @main
 struct dwordleApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            DwordleView(
+                store: Store(initialState: DwordleState(columns: 5, rows: 6),
+                             reducer: dwordleReducer,
+                             environment: DwordleEnvironment())
+            )
         }
     }
 }
