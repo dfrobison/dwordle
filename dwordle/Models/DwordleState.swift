@@ -12,7 +12,7 @@ struct DwordleState: Equatable {
     let rows: Int
     var row = 0
     var column = 0
-    var wordOfTheDay = "words"
+    var wordOfTheDay = "WORDS"
     var words: Set<String> = []
     var dwordleGrid: [[DwordleCell]] = [[]]
     var lost = false
