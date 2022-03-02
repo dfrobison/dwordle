@@ -79,7 +79,9 @@ struct DwordleView: View {
             }
             .frame(maxHeight: .infinity)
             Button("New Game") {
-                viewStore.send(.newGame)
+                withAnimation {
+                    viewStore.send(.newGame)
+                }
             }
             .padding(8)
             DwordleKeyboardView() {
