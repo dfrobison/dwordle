@@ -8,6 +8,7 @@
 import ComposableArchitecture
 
 struct DwordleState: Equatable {
+    var alert: AlertState<DwordleAction>?
     let columns: Int
     let rows: Int
     var row = 0
@@ -17,6 +18,10 @@ struct DwordleState: Equatable {
     var dwordleGrid: [[DwordleCell]] = [[]]
     var lost = false
     var solved = false
+    
+    var canPlay: Bool {
+        lost == false && solved == false
+    }
     
     init(columns: Int, rows: Int) {
         self.columns = columns
@@ -63,8 +68,17 @@ struct DwordleState: Equatable {
     mutating func checkWinOrLose(_ rowEvaluation: [CellEvaluation]) {
         if rowEvaluation.solved {
             solved = true
+            alert = .init(
+                title: TextState("You Won! 🎉🎉🎉🎉"),
+                dismissButton: .default(TextState("OK"), action: .send(.cancelTapped))
+              )
         } else if row == rows - 1 {
             lost = true
+            alert = .init(
+                title: TextState("You Lost!"),
+                message: TextState("The word was:\n\(wordOfTheDay)"),
+                dismissButton: .default(TextState("OK"), action: .send(.cancelTapped))
+              )
         }
     }
     

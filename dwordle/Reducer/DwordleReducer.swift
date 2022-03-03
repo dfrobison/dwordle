@@ -22,5 +22,8 @@ let dwordleReducer = Reducer<DwordleState, DwordleAction, DwordleEnvironment> { 
         case .newGame:
             state.newGame()
             return .none
+        case .cancelTapped:
+            state.alert = nil
+            return .none
     }
 }

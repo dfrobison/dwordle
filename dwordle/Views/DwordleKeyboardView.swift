@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import ComposableArchitecture
 
 
 struct DwordleKeyView: View {
@@ -37,6 +38,7 @@ struct DwordleKeyboardRowView: View {
 }
 
 struct DwordleKeyboardView: View {
+    let isDisabled: Bool
     let defaultKeyboardRowHeight = 30.0
     let sendKey: (Character) -> Void
     let sendEvaluate: () -> Void
@@ -59,11 +61,10 @@ struct DwordleKeyboardView: View {
                     Image(systemName: "delete.left")
                         .dwordleKeyStyle(width: 45)
                 }
-                
-
             }
             .frame(height: defaultKeyboardRowHeight)
             .padding([.top], 2)
         }
+        .disabled(isDisabled)
     }
 }

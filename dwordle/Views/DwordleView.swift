@@ -30,22 +30,31 @@ struct DwordleView: View {
                 DwordleCellView(cell: viewStore.dwordleGrid[row][column])
             }
             .frame(maxHeight: .infinity)
-            Button("New Game") {
-                withAnimation {
-                    viewStore.send(.newGame)
-                }
-            }
-            .padding(8)
-            DwordleKeyboardView() {
+            DwordleKeyboardView(isDisabled: !viewStore.canPlay) {
                 viewStore.send(.addLetter($0))
             } sendEvaluate: {
                 viewStore.send(.evaluate)
             } sendDelete: {
                 viewStore.send(.backspace)
             }
+            .alert(
+                self.store.scope(state: \.alert),
+                dismiss: .cancelTapped
+            )
+            
         }
-        .padding(24)
+        .padding([.leading, .trailing, .bottom], 24)
         .background(Color(.systemGray6))
+        .toolbar {
+            ToolbarItemGroup(placement: .bottomBar) {
+                Button("New Game") {
+                    withAnimation {
+                        viewStore.send(.newGame)
+                    }
+                }
+                Spacer()
+            }
+        }
     }
 }
 
