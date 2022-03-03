@@ -23,6 +23,8 @@
 		91B0D8DB27CDD53300EEA352 /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91B0D8DA27CDD53300EEA352 /* Array+Extension.swift */; };
 		91B0D8DD27CDD57D00EEA352 /* CellEvaluation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91B0D8DC27CDD57D00EEA352 /* CellEvaluation.swift */; };
 		91B0D8DF27CDD59F00EEA352 /* DwordleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91B0D8DE27CDD59F00EEA352 /* DwordleCell.swift */; };
+		91B0D8E127D054EC00EEA352 /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91B0D8E027D054EC00EEA352 /* View+Extension.swift */; };
+		91B0D8E327D0553200EEA352 /* DwordleKeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91B0D8E227D0553200EEA352 /* DwordleKeyboardView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +44,8 @@
 		91B0D8DA27CDD53300EEA352 /* Array+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
 		91B0D8DC27CDD57D00EEA352 /* CellEvaluation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellEvaluation.swift; sourceTree = "<group>"; };
 		91B0D8DE27CDD59F00EEA352 /* DwordleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DwordleCell.swift; sourceTree = "<group>"; };
+		91B0D8E027D054EC00EEA352 /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
+		91B0D8E227D0553200EEA352 /* DwordleKeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DwordleKeyboardView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +132,7 @@
 				91B0D8C627CB2E0300EEA352 /* DwordleView.swift */,
 				91B0D8D127CDB98C00EEA352 /* DwordleCellView.swift */,
 				91B0D8D627CDBF9500EEA352 /* DwordleGridView.swift */,
+				91B0D8E227D0553200EEA352 /* DwordleKeyboardView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -146,6 +151,7 @@
 				91B0D8D427CDBD9900EEA352 /* Color+Extension.swift */,
 				91B0D8D827CDC52F00EEA352 /* Shape+Extension.swift */,
 				91B0D8DA27CDD53300EEA352 /* Array+Extension.swift */,
+				91B0D8E027D054EC00EEA352 /* View+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -238,7 +244,9 @@
 				91B0D8D227CDB98C00EEA352 /* DwordleCellView.swift in Sources */,
 				91B0D8C927CB2E5F00EEA352 /* DwordleReducer.swift in Sources */,
 				91B0D8B027CB234E00EEA352 /* dwordleApp.swift in Sources */,
+				91B0D8E127D054EC00EEA352 /* View+Extension.swift in Sources */,
 				91B0D8CE27CB2F2700EEA352 /* DwordleEnvironment.swift in Sources */,
+				91B0D8E327D0553200EEA352 /* DwordleKeyboardView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

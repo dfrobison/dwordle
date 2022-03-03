@@ -8,54 +8,7 @@
 import SwiftUI
 import ComposableArchitecture
 
-struct DwordleKeyView: View {
-    let letter: Character
-    let sendKey: (Character) -> Void
-    
-    var body: some View {
-        Button(String(letter)) {
-            sendKey(letter)
-        }
-    }
-}
 
-struct DwordleKeyboardRowView: View {
-    let letters: [Character]
-    let sendKey: (Character) -> Void
-    
-    var body: some View {
-        HStack {
-            ForEach(letters, id: \.self) {
-                DwordleKeyView(letter: $0, sendKey: sendKey)
-            }
-        }
-    }
-}
-
-struct DwordleKeyboardView: View {
-    let sendKey: (Character) -> Void
-    let sendEvaluate: () -> Void
-    let sendDelete: () -> Void
-    
-    var body: some View {
-        Self._printChanges()
-        return VStack {
-            DwordleKeyboardRowView(letters: "QWERTYUIOP".map {$0}, sendKey: sendKey)
-            DwordleKeyboardRowView(letters: "ASDFGHJKL".map {$0}, sendKey: sendKey)
-            HStack {
-                Button("Enter") {
-                    sendEvaluate()
-                }
-                DwordleKeyboardRowView(letters: "ZXCVBNM".map {$0}, sendKey: sendKey)
-                Button {
-                    sendDelete()
-                } label: {
-                    Image(systemName: "delete.left")
-                }
-            }
-        }
-    }
-}
 
 
 struct DwordleView: View {
@@ -68,8 +21,7 @@ struct DwordleView: View {
     }
     
     var body: some View {
-        Self._printChanges()
-        return VStack {
+        VStack {
             DwordleGridView(
                 width: viewStore.columns,
                 height: viewStore.rows,
