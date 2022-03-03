@@ -11,4 +11,5 @@ enum DwordleAction: Equatable {
     case backspace
     case newGame
     case cancelTapped
+    case onAppear
 }

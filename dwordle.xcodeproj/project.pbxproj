@@ -25,6 +25,7 @@
 		91B0D8DF27CDD59F00EEA352 /* DwordleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91B0D8DE27CDD59F00EEA352 /* DwordleCell.swift */; };
 		91B0D8E127D054EC00EEA352 /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91B0D8E027D054EC00EEA352 /* View+Extension.swift */; };
 		91B0D8E327D0553200EEA352 /* DwordleKeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91B0D8E227D0553200EEA352 /* DwordleKeyboardView.swift */; };
+		91B0D8E627D0654800EEA352 /* WordProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91B0D8E527D0654800EEA352 /* WordProvider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		91B0D8DE27CDD59F00EEA352 /* DwordleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DwordleCell.swift; sourceTree = "<group>"; };
 		91B0D8E027D054EC00EEA352 /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
 		91B0D8E227D0553200EEA352 /* DwordleKeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DwordleKeyboardView.swift; sourceTree = "<group>"; };
+		91B0D8E527D0654800EEA352 /* WordProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordProvider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +81,7 @@
 		91B0D8AE27CB234E00EEA352 /* dwordle */ = {
 			isa = PBXGroup;
 			children = (
+				91B0D8E427D064B300EEA352 /* Providers */,
 				91B0D8D327CDBD8700EEA352 /* Extensions */,
 				91B0D8CC27CB2F1300EEA352 /* Environment */,
 				91B0D8C527CB2DD900EEA352 /* Views */,
@@ -154,6 +157,14 @@
 				91B0D8E027D054EC00EEA352 /* View+Extension.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		91B0D8E427D064B300EEA352 /* Providers */ = {
+			isa = PBXGroup;
+			children = (
+				91B0D8E527D0654800EEA352 /* WordProvider.swift */,
+			);
+			path = Providers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -236,6 +247,7 @@
 				91B0D8C427CB24CE00EEA352 /* DwordleState.swift in Sources */,
 				91B0D8D527CDBD9900EEA352 /* Color+Extension.swift in Sources */,
 				91B0D8D927CDC52F00EEA352 /* Shape+Extension.swift in Sources */,
+				91B0D8E627D0654800EEA352 /* WordProvider.swift in Sources */,
 				91B0D8DB27CDD53300EEA352 /* Array+Extension.swift in Sources */,
 				91B0D8D727CDBF9500EEA352 /* DwordleGridView.swift in Sources */,
 				91B0D8C727CB2E0300EEA352 /* DwordleView.swift in Sources */,

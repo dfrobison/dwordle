@@ -13,7 +13,7 @@ struct DwordleState: Equatable {
     let rows: Int
     var row = 0
     var column = 0
-    var wordOfTheDay = "WORDS"
+    var wordOfTheDay = ""
     var words: Set<String> = []
     var dwordleGrid: [[DwordleCell]] = [[]]
     var lost = false
@@ -26,7 +26,7 @@ struct DwordleState: Equatable {
     init(columns: Int, rows: Int) {
         self.columns = columns
         self.rows = rows
-        newGame()
+        newGame(wordOfTheDay: "")
     }
     
     mutating func addLetter(_ letter: Character) {
@@ -82,11 +82,12 @@ struct DwordleState: Equatable {
         }
     }
     
-    mutating func newGame() {
+    mutating func newGame(wordOfTheDay: String) {
         row = 0
         column = 0
         lost = false
         solved = false
+        self.wordOfTheDay = wordOfTheDay
         self.dwordleGrid = Array(
             repeating: .init(repeating: .init(), count: columns),
             count: rows
