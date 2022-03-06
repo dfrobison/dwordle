@@ -9,240 +9,67 @@ import Foundation
 import Zip
 
 struct WordProvider {
-    func generateWord() -> String {
-        allowedWords.randomElement()!
+    private var word = ""
+    private var numberOfWords = 0
+    private var filePath = ""
+    
+    init() {
+        load()
     }
     
-    func load() {
-//        do {
-//                            let filePath = Bundle.main.url(forResource: "5LetterWords", withExtension: "zip")!
-//                            let documentsDirectory = FileManager.default.urls(for:.documentDirectory, in: .userDomainMask)[0]
-//                            try Zip.unzipFile(filePath, destination: documentsDirectory, overwrite: true, password: nil)
-//                            let fileURL = documentsDirectory.appendingPathComponent("5LetterWords")
-//                            let text2 = try String(contentsOf: fileURL, encoding: .utf8)
-//                            let t = text2.split(separator: ",").map(String.init)
-//                            print("\(t.count)")
-//                        }
-//                        catch {
-//                          print("Something went wrong")
-//                        }
-//        func readFile(_ path: String) -> Int {
-//            errno = 0
-//            if freopen(path, "r", stdin) == nil {
-//                perror(path)
-//                return 1
-//            }
-//            while let line = readLine() {
-//                printLog(line)
-//                //do something with lines..
-//            }
-//            return 0
-//        }
+    func generateWord() -> String {
+        word
     }
-
-    let allowedWords: [String] = ["about",
-                                         "above",
-                                         "abuse",
-                                         "actor",
-                                         "acute",
-                                         "admit",
-                                         "adopt",
-                                         "adult",
-                                         "after",
-                                         "again",
-                                         "agent",
-                                         "agree",
-                                         "ahead",
-                                         "alarm",
-                                         "album",
-                                         "alert",
-                                         "alike",
-                                         "alive",
-                                         "allow",
-                                         "alone",
-                                         "along",
-                                         "alter",
-                                         "among",
-                                         "anger",
-                                         "Angle",
-                                         "angry",
-                                         "apart",
-                                         "apple",
-                                         "apply",
-                                         "arena",
-                                         "argue",
-                                         "arise",
-                                         "array",
-                                         "aside",
-                                         "asset",
-                                         "audio",
-                                         "audit",
-                                         "avoid",
-                                         "award",
-                                         "aware",
-                                         "badly",
-                                         "baker",
-                                         "bases",
-                                         "basic",
-                                         "basis",
-                                         "beach",
-                                         "began",
-                                         "begin",
-                                         "begun",
-                                         "being",
-                                         "below",
-                                         "bench",
-                                         "billy",
-                                         "birth",
-                                         "black",
-                                         "blame",
-                                         "blind",
-                                         "block",
-                                         "blood",
-                                         "board",
-                                         "boost",
-                                         "booth",
-                                         "bound",
-                                         "brain",
-                                         "brand",
-                                         "bread",
-                                         "break",
-                                         "breed",
-                                         "brief",
-                                         "bring",
-                                         "broad",
-                                         "broke",
-                                         "brown",
-                                         "build",
-                                         "built",
-                                         "buyer",
-                                         "cable",
-                                         "calif",
-                                         "carry",
-                                         "catch",
-                                         "cause",
-                                         "chain",
-                                         "chair",
-                                         "chart",
-                                         "chase",
-                                         "cheap",
-                                         "check",
-                                         "chest",
-                                         "chief",
-                                         "child",
-                                         "china",
-                                         "chose",
-                                         "civil",
-                                         "claim",
-                                         "class",
-                                         "clean",
-                                         "clear",
-                                         "click",
-                                         "clock",
-                                         "close",
-                                         "coach",
-                                         "coast",
-                                         "could",
-                                         "count",
-                                         "court",
-                                         "cover",
-                                         "craft",
-                                         "crash",
-                                         "cream",
-                                         "crime",
-                                         "cross",
-                                         "crowd",
-                                         "crown",
-                                         "curve",
-                                         "cycle",
-                                         "daily",
-                                         "dance",
-                                         "dated",
-                                         "dealt",
-                                         "death",
-                                         "debut",
-                                         "delay",
-                                         "depth",
-                                         "doing",
-                                         "doubt",
-                                         "dozen",
-                                         "draft",
-                                         "drama",
-                                         "drawn",
-                                         "dream",
-                                         "dress",
-                                         "drill",
-                                         "drink",
-                                         "drive",
-                                         "drove",
-                                         "dying",
-                                         "eager",
-                                         "early",
-                                         "earth",
-                                         "eight",
-                                         "elite",
-                                         "empty",
-                                         "enemy",
-                                         "enjoy",
-                                         "enter",
-                                         "entry",
-                                         "equal",
-                                         "error",
-                                         "event",
-                                         "every",
-                                         "exact",
-                                         "exist",
-                                         "extra",
-                                         "faith",
-                                         "false",
-                                         "fault",
-                                         "fiber",
-                                         "field",
-                                         "fifth",
-                                         "fifty",
-                                         "fight",
-                                         "final",
-                                         "first",
-                                         "fixed",
-                                         "flash",
-                                         "fleet",
-                                         "floor",
-                                         "fluid",
-                                         "focus",
-                                         "force",
-                                         "forth",
-                                         "forty",
-                                         "forum",
-                                         "found",
-                                         "frame",
-                                         "frank",
-                                         "fraud",
-                                         "fresh",
-                                         "front",
-                                         "fruit",
-                                         "fully",
-                                         "funny",
-                                         "giant",
-                                         "given",
-                                         "glass",
-                                         "globe",
-                                         "going",
-                                         "grace",
-                                         "grade",
-                                         "grand",
-                                         "grant",
-                                         "grass",
-                                         "great",
-                                         "green",
-                                         "gross",
-                                         "group",
-                                         "grown",
-                                         "guard",
-                                         "guess",
-                                         "guest",
-                                         "guide",
-                                         "happy",
-                                         "harry",
-                                         "heart"]
+    
+    mutating func load() {
+        let fileManger = FileManager.default
+        let documentsDirectory = fileManger.urls(for:.documentDirectory, in: .userDomainMask)[0]
+        let fileURL = documentsDirectory.appendingPathComponent("5LetterWords")
+        
+        filePath = fileURL.path
+        
+        if !fileManger.fileExists(atPath: filePath) {
+            do {
+                let resourceFilePath = Bundle.main.url(forResource: "5LetterWords", withExtension: "zip")!
+                
+                try Zip.unzipFile(resourceFilePath, destination: documentsDirectory, overwrite: true, password: nil)
+            } catch {
+                print(error.localizedDescription)
+                return
+            }
+        }
+        
+        loadNumberOfLines()
+    }
+    
+    mutating private func loadNumberOfLines() {
+        errno = 0
+        
+        
+        if freopen(filePath, "r", stdin) == nil {
+            perror(filePath)
+        }
+        if let line = readLine() {
+            if let numberOfWords = Int(line) {
+                self.numberOfWords = numberOfWords
+            }
+        }
+    }
+    
+    mutating func readFile(atOffset: Int = 0) -> Int {
+        errno = 0
+        if freopen(filePath, "r", stdin) == nil {
+            perror(filePath)
+            return 1
+        }
+        if let line = readLine() {
+            if let numberOfWords = Int(line) {
+                self.numberOfWords = numberOfWords
+            }
+        }
+        return 0
+    }
+    
+    
     
 }

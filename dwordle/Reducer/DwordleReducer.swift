@@ -27,7 +27,7 @@ let dwordleReducer = Reducer<DwordleState, DwordleAction, DwordleEnvironment> { 
             return .none
         case .onAppear:
             return Effect.concatenate(.fireAndForget {
-                environment.wordProvider.load()
+               // environment.wordProvider.load()
             },
             Effect(value: .newGame))
     }
