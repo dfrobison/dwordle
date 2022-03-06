@@ -6,13 +6,29 @@
 //
 
 import Foundation
+import Zip
 
 struct WordProvider {
-    static func generateWord() -> String {
-        Self.allowedWords.randomElement()!
+    func generateWord() -> String {
+        allowedWords.randomElement()!
+    }
+    
+    func load() {
+//        do {
+//                            let filePath = Bundle.main.url(forResource: "5LetterWords", withExtension: "zip")!
+//                            let documentsDirectory = FileManager.default.urls(for:.documentDirectory, in: .userDomainMask)[0]
+//                            try Zip.unzipFile(filePath, destination: documentsDirectory, overwrite: true, password: nil)
+//                            let fileURL = documentsDirectory.appendingPathComponent("5LetterWords")
+//                            let text2 = try String(contentsOf: fileURL, encoding: .utf8)
+//                            let t = text2.split(separator: ",").map(String.init)
+//                            print("\(t.count)")
+//                        }
+//                        catch {
+//                          print("Something went wrong")
+//                        }
     }
 
-    static let allowedWords: [String] = ["about",
+    let allowedWords: [String] = ["about",
                                          "above",
                                          "abuse",
                                          "actor",

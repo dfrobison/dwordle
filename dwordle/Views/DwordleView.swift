@@ -65,7 +65,7 @@ struct DwordleView_Previews: PreviewProvider {
     static var previews: some View {
         DwordleView( store: Store(initialState: DwordleState(columns: 5, rows: 6),
                                   reducer: dwordleReducer,
-                                  environment: DwordleEnvironment(wordProvider: WordProvider.generateWord)))
+                                  environment: DwordleEnvironment(wordProvider: WordProvider())))
     }
 }
 

@@ -6,5 +6,5 @@
 //
 
 struct DwordleEnvironment {
-    let wordProvider: () -> String
+    let wordProvider: WordProvider
 }

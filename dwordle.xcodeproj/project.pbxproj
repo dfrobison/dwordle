@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		918B8C8427D46F020095FA6F /* Zip in Frameworks */ = {isa = PBXBuildFile; productRef = 918B8C8327D46F020095FA6F /* Zip */; };
+		918B8C8627D4731A0095FA6F /* 5LetterWords.zip in Resources */ = {isa = PBXBuildFile; fileRef = 918B8C8527D4731A0095FA6F /* 5LetterWords.zip */; };
 		91B0D8B027CB234E00EEA352 /* dwordleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91B0D8AF27CB234E00EEA352 /* dwordleApp.swift */; };
 		91B0D8B427CB235000EEA352 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 91B0D8B327CB235000EEA352 /* Assets.xcassets */; };
 		91B0D8B727CB235000EEA352 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 91B0D8B627CB235000EEA352 /* Preview Assets.xcassets */; };
@@ -29,6 +31,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		918B8C8527D4731A0095FA6F /* 5LetterWords.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = 5LetterWords.zip; sourceTree = "<group>"; };
 		91B0D8AC27CB234E00EEA352 /* dwordle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dwordle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		91B0D8AF27CB234E00EEA352 /* dwordleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dwordleApp.swift; sourceTree = "<group>"; };
 		91B0D8B327CB235000EEA352 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -55,6 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				918B8C8427D46F020095FA6F /* Zip in Frameworks */,
 				91B0D8BF27CB239800EEA352 /* ComposableArchitecture in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -62,6 +66,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		918B8C8727D4732F0095FA6F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				918B8C8527D4731A0095FA6F /* 5LetterWords.zip */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		91B0D8A327CB234E00EEA352 = {
 			isa = PBXGroup;
 			children = (
@@ -81,6 +93,7 @@
 		91B0D8AE27CB234E00EEA352 /* dwordle */ = {
 			isa = PBXGroup;
 			children = (
+				918B8C8727D4732F0095FA6F /* Resources */,
 				91B0D8E427D064B300EEA352 /* Providers */,
 				91B0D8D327CDBD8700EEA352 /* Extensions */,
 				91B0D8CC27CB2F1300EEA352 /* Environment */,
@@ -185,6 +198,7 @@
 			name = dwordle;
 			packageProductDependencies = (
 				91B0D8BE27CB239800EEA352 /* ComposableArchitecture */,
+				918B8C8327D46F020095FA6F /* Zip */,
 			);
 			productName = dwordle;
 			productReference = 91B0D8AC27CB234E00EEA352 /* dwordle.app */;
@@ -216,6 +230,7 @@
 			mainGroup = 91B0D8A327CB234E00EEA352;
 			packageReferences = (
 				91B0D8BD27CB239800EEA352 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
+				918B8C8227D46F020095FA6F /* XCRemoteSwiftPackageReference "Zip" */,
 			);
 			productRefGroup = 91B0D8AD27CB234E00EEA352 /* Products */;
 			projectDirPath = "";
@@ -232,6 +247,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				91B0D8B727CB235000EEA352 /* Preview Assets.xcassets in Resources */,
+				918B8C8627D4731A0095FA6F /* 5LetterWords.zip in Resources */,
 				91B0D8B427CB235000EEA352 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -463,6 +479,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		918B8C8227D46F020095FA6F /* XCRemoteSwiftPackageReference "Zip" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/marmelroy/Zip";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		91B0D8BD27CB239800EEA352 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/pointfreeco/swift-composable-architecture.git";
@@ -474,6 +498,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		918B8C8327D46F020095FA6F /* Zip */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 918B8C8227D46F020095FA6F /* XCRemoteSwiftPackageReference "Zip" */;
+			productName = Zip;
+		};
 		91B0D8BE27CB239800EEA352 /* ComposableArchitecture */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 91B0D8BD27CB239800EEA352 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;

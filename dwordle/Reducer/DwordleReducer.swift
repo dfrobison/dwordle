@@ -20,12 +20,15 @@ let dwordleReducer = Reducer<DwordleState, DwordleAction, DwordleEnvironment> { 
             state.backspace()
             return .none
         case .newGame:
-            state.newGame(wordOfTheDay: environment.wordProvider().uppercased())
+            state.newGame(wordOfTheDay: environment.wordProvider.generateWord().uppercased())
             return .none
         case .cancelTapped:
             state.alert = nil
             return .none
         case .onAppear:
-            return Effect(value: .newGame)
+            return Effect.concatenate(.fireAndForget {
+                environment.wordProvider.load()
+            },
+            Effect(value: .newGame))
     }
 }
