@@ -26,6 +26,18 @@ struct WordProvider {
 //                        catch {
 //                          print("Something went wrong")
 //                        }
+//        func readFile(_ path: String) -> Int {
+//            errno = 0
+//            if freopen(path, "r", stdin) == nil {
+//                perror(path)
+//                return 1
+//            }
+//            while let line = readLine() {
+//                printLog(line)
+//                //do something with lines..
+//            }
+//            return 0
+//        }
     }
 
     let allowedWords: [String] = ["about",
