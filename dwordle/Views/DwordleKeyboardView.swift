@@ -10,7 +10,7 @@ import ComposableArchitecture
 
 
 struct DwordleKeyView: View {
-    let defaultButtonWidth = 32.0
+    let defaultButtonWidth = 30.0
     let letter: Character
     let keyEvaluation: CellEvaluation?
     let sendKey: (Character) -> Void
@@ -51,8 +51,8 @@ struct DwordleKeyboardView: View {
 
     var body: some View {
         VStack {
-            createKeyRow("QWERTYUIOP") { EmptyView() } rightContent: { EmptyView() }
-            createKeyRow("ASDFGHJKL") { EmptyView() } rightContent: { EmptyView() }
+            createKeyRow("QWERTYUIOP")
+            createKeyRow("ASDFGHJKL")
             createKeyRow("ZXCVBNM") {
                 Button("Enter") {
                     viewStore.send(.evaluate)
@@ -69,6 +69,11 @@ struct DwordleKeyboardView: View {
             }
         }
         .disabled(!viewStore.canPlay)
+    }
+    
+    @ViewBuilder
+    private func createKeyRow(_ letters: String) -> some View {
+        createKeyRow(letters) { EmptyView() } rightContent: { EmptyView() }
     }
     
     @ViewBuilder

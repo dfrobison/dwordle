@@ -21,38 +21,40 @@ struct DwordleView: View {
     }
     
     var body: some View {
-        VStack {
-            DwordleGridView(
-                width: viewStore.columns,
-                height: viewStore.rows,
-                spacing: 8
-            ) { row, column in
-                DwordleCellView(cell: viewStore.dwordleGrid[row][column])
-            }
-            .frame(maxHeight: .infinity)
-            .alert(
-                self.store.scope(state: \.alert),
-                dismiss: .cancelTapped
-            )
-
+        ZStack {
+            Color(.systemGray6)
+            .ignoresSafeArea()
             
-            DwordleKeyboardView(viewStore: viewStore)
-            
-        }
-        .padding([.leading, .trailing, .bottom], 24)
-        .background(Color(.systemGray6))
-        .toolbar {
-            ToolbarItemGroup(placement: .bottomBar) {
-                Button("New Game") {
-                    withAnimation {
-                        viewStore.send(.newGame)
-                    }
+            VStack {
+                DwordleGridView(
+                    width: viewStore.columns,
+                    height: viewStore.rows,
+                    spacing: 8
+                ) { row, column in
+                    DwordleCellView(cell: viewStore.dwordleGrid[row][column])
                 }
-                Spacer()
+                .frame(maxHeight: .infinity)
+                .alert(
+                    self.store.scope(state: \.alert),
+                    dismiss: .cancelTapped
+                )
+                
+                DwordleKeyboardView(viewStore: viewStore)
             }
-        }
-        .onAppear {
-            viewStore.send(.onAppear)
+            .padding([.leading, .trailing, .bottom], 12)
+            .toolbar {
+                ToolbarItemGroup(placement: .bottomBar) {
+                    Button("New Game") {
+                        withAnimation {
+                            viewStore.send(.newGame)
+                        }
+                    }
+                    Spacer()
+                }
+            }
+            .onAppear {
+                viewStore.send(.onAppear)
+            }
         }
     }
 }
