@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3DDF380827D80CF800A58B66 /* SFSymbol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DDF380727D80CF800A58B66 /* SFSymbol.swift */; };
+		3DDF380A27D80D6100A58B66 /* Image+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DDF380927D80D6100A58B66 /* Image+Extension.swift */; };
 		91080E1E27D5960B0066C240 /* LineReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91080E1D27D5960B0066C240 /* LineReader.swift */; };
 		918B8C8427D46F020095FA6F /* Zip in Frameworks */ = {isa = PBXBuildFile; productRef = 918B8C8327D46F020095FA6F /* Zip */; };
 		918B8C8627D4731A0095FA6F /* 5LetterWords.zip in Resources */ = {isa = PBXBuildFile; fileRef = 918B8C8527D4731A0095FA6F /* 5LetterWords.zip */; };
@@ -32,6 +34,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3DDF380727D80CF800A58B66 /* SFSymbol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSymbol.swift; sourceTree = "<group>"; };
+		3DDF380927D80D6100A58B66 /* Image+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+Extension.swift"; sourceTree = "<group>"; };
 		91080E1D27D5960B0066C240 /* LineReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineReader.swift; sourceTree = "<group>"; };
 		918B8C8527D4731A0095FA6F /* 5LetterWords.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = 5LetterWords.zip; sourceTree = "<group>"; };
 		91B0D8AC27CB234E00EEA352 /* dwordle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dwordle.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -72,6 +76,7 @@
 			isa = PBXGroup;
 			children = (
 				91080E1D27D5960B0066C240 /* LineReader.swift */,
+				3DDF380727D80CF800A58B66 /* SFSymbol.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -179,6 +184,7 @@
 				91B0D8D827CDC52F00EEA352 /* Shape+Extension.swift */,
 				91B0D8DA27CDD53300EEA352 /* Array+Extension.swift */,
 				91B0D8E027D054EC00EEA352 /* View+Extension.swift */,
+				3DDF380927D80D6100A58B66 /* Image+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -278,6 +284,7 @@
 				91B0D8DB27CDD53300EEA352 /* Array+Extension.swift in Sources */,
 				91B0D8D727CDBF9500EEA352 /* DwordleGridView.swift in Sources */,
 				91B0D8C727CB2E0300EEA352 /* DwordleView.swift in Sources */,
+				3DDF380827D80CF800A58B66 /* SFSymbol.swift in Sources */,
 				91080E1E27D5960B0066C240 /* LineReader.swift in Sources */,
 				91B0D8CB27CB2ED300EEA352 /* DwordleAction.swift in Sources */,
 				91B0D8DD27CDD57D00EEA352 /* CellEvaluation.swift in Sources */,
@@ -287,6 +294,7 @@
 				91B0D8E127D054EC00EEA352 /* View+Extension.swift in Sources */,
 				91B0D8CE27CB2F2700EEA352 /* DwordleEnvironment.swift in Sources */,
 				91B0D8E327D0553200EEA352 /* DwordleKeyboardView.swift in Sources */,
+				3DDF380A27D80D6100A58B66 /* Image+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

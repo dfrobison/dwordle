@@ -63,7 +63,7 @@ struct DwordleKeyboardView: View {
                 Button {
                     viewStore.send(.backspace)
                 } label: {
-                    Image(systemName: "delete.left")
+                    Image(systemSymbol: .deleteLeft)
                         .dwordleKeyStyle(width: 50)
                 }
             }
