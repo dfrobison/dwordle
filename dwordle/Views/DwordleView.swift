@@ -30,17 +30,13 @@ struct DwordleView: View {
                 DwordleCellView(cell: viewStore.dwordleGrid[row][column])
             }
             .frame(maxHeight: .infinity)
-            DwordleKeyboardView(isDisabled: !viewStore.canPlay) {
-                viewStore.send(.addLetter($0))
-            } sendEvaluate: {
-                viewStore.send(.evaluate)
-            } sendDelete: {
-                viewStore.send(.backspace)
-            }
             .alert(
                 self.store.scope(state: \.alert),
                 dismiss: .cancelTapped
             )
+
+            
+            DwordleKeyboardView(viewStore: viewStore)
             
         }
         .padding([.leading, .trailing, .bottom], 24)

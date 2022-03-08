@@ -8,12 +8,14 @@
 import ComposableArchitecture
 
 struct DwordleState: Equatable {
+    typealias KeyEvaluation = [Character : CellEvaluation]
     var alert: AlertState<DwordleAction>?
     let columns: Int
     let rows: Int
     var row = 0
     var column = 0
     var guessWord = ""
+    var keys: KeyEvaluation = [:]
     var dwordleGrid: [[DwordleCell]] = [[]]
     var lost = false
     var solved = false
@@ -42,13 +44,23 @@ struct DwordleState: Equatable {
             if let character = dwordleGrid[row][cellIndex].letter {
                 if character == guessWord[guessWord.index(guessWord.startIndex, offsetBy: cellIndex)] {
                     dwordleGrid[row][cellIndex].evalation = .exact
+                    keys[character] = .exact
                 } else if guessWord.contains(character) {
                     dwordleGrid[row][cellIndex].evalation = .included
+                    
+                    switch keys[character] {
+                        case .none, .some(.miss):
+                            keys[character] = .included
+                        default:
+                            break
+                    }
                 } else {
                     dwordleGrid[row][cellIndex].evalation = .miss
+                    
+                    if case .none = keys[character] {
+                        keys[character] = .miss
+                    }
                 }
-            } else {
-                dwordleGrid[row][cellIndex].evalation = .miss
             }
         }
         
@@ -70,14 +82,14 @@ struct DwordleState: Equatable {
             alert = .init(
                 title: TextState("You Won! 🎉🎉🎉🎉"),
                 dismissButton: .default(TextState("OK"), action: .send(.cancelTapped))
-              )
+            )
         } else if row == rows - 1 {
             lost = true
             alert = .init(
                 title: TextState("You Lost!"),
                 message: TextState("The word was:\n\(guessWord)"),
                 dismissButton: .default(TextState("OK"), action: .send(.cancelTapped))
-              )
+            )
         }
     }
     

@@ -9,6 +9,7 @@ import SwiftUI
 
 struct DwordleKey: ViewModifier {
     let width: CGFloat
+    let keyColor: Color?
     
     func body(content: Content) -> some View {
         content
@@ -20,14 +21,14 @@ struct DwordleKey: ViewModifier {
                     cornerRadius: 10,
                     style: .continuous
                 )
-                .fill(Color.blue)
+                    .fill(keyColor ?? Color(UIColor.systemGray))
             )
     }
 }
 
 extension View {
-    func dwordleKeyStyle(width: CGFloat) -> some View {
-        modifier(DwordleKey(width: width))
+    func dwordleKeyStyle(width: CGFloat, keyColor: Color? = nil) -> some View {
+        modifier(DwordleKey(width: width, keyColor: keyColor))
     }
 }
 
