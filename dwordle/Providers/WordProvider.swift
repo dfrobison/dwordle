@@ -8,68 +8,46 @@
 import Foundation
 import Zip
 
-struct WordProvider {
-    private var word = ""
+class WordProvider {
+    private let fileName = "5LetterWords"
+    private var lineReader: LineReader!
     private var numberOfWords = 0
-    private var filePath = ""
+    private var words: Set<String> = []
     
     init() {
         load()
     }
     
-    func generateWord() -> String {
-        word
+    var generateWord: String {
+        words.randomElement() ?? "BADWD"
+    }
+
+    func isWord(_ word: String) -> Bool {
+        words.contains(word)
     }
     
-    mutating func load() {
+    private func load() {
         let fileManger = FileManager.default
         let documentsDirectory = fileManger.urls(for:.documentDirectory, in: .userDomainMask)[0]
-        let fileURL = documentsDirectory.appendingPathComponent("5LetterWords")
+        let fileURL = documentsDirectory.appendingPathComponent(fileName)
+        let filePath = fileURL.path
         
-        filePath = fileURL.path
-        
+        // Unzip word file if it doesn't already exist
         if !fileManger.fileExists(atPath: filePath) {
             do {
-                let resourceFilePath = Bundle.main.url(forResource: "5LetterWords", withExtension: "zip")!
-                
+                let resourceFilePath = Bundle.main.url(forResource: fileName, withExtension: "zip")!
                 try Zip.unzipFile(resourceFilePath, destination: documentsDirectory, overwrite: true, password: nil)
             } catch {
                 print(error.localizedDescription)
-                return
             }
         }
         
-        loadNumberOfLines()
-    }
-    
-    mutating private func loadNumberOfLines() {
-        errno = 0
-        
-        
-        if freopen(filePath, "r", stdin) == nil {
-            perror(filePath)
-        }
-        if let line = readLine() {
-            if let numberOfWords = Int(line) {
-                self.numberOfWords = numberOfWords
-            }
+        // Put words into Set for quick searching
+        do {
+            let data = try String(contentsOfFile: filePath, encoding: .utf8)
+            words = Set(data.components(separatedBy: .newlines))
+        } catch {
+            print(error.localizedDescription)
         }
     }
-    
-    mutating func readFile(atOffset: Int = 0) -> Int {
-        errno = 0
-        if freopen(filePath, "r", stdin) == nil {
-            perror(filePath)
-            return 1
-        }
-        if let line = readLine() {
-            if let numberOfWords = Int(line) {
-                self.numberOfWords = numberOfWords
-            }
-        }
-        return 0
-    }
-    
-    
-    
 }

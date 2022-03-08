@@ -13,8 +13,7 @@ struct DwordleState: Equatable {
     let rows: Int
     var row = 0
     var column = 0
-    var wordOfTheDay = ""
-    var words: Set<String> = []
+    var guessWord = ""
     var dwordleGrid: [[DwordleCell]] = [[]]
     var lost = false
     var solved = false
@@ -26,7 +25,7 @@ struct DwordleState: Equatable {
     init(columns: Int, rows: Int) {
         self.columns = columns
         self.rows = rows
-        newGame(wordOfTheDay: "")
+        newGame()
     }
     
     mutating func addLetter(_ letter: Character) {
@@ -41,9 +40,9 @@ struct DwordleState: Equatable {
         
         for cellIndex in 0..<columns {
             if let character = dwordleGrid[row][cellIndex].letter {
-                if character == wordOfTheDay[wordOfTheDay.index(wordOfTheDay.startIndex, offsetBy: cellIndex)] {
+                if character == guessWord[guessWord.index(guessWord.startIndex, offsetBy: cellIndex)] {
                     dwordleGrid[row][cellIndex].evalation = .exact
-                } else if wordOfTheDay.contains(character) {
+                } else if guessWord.contains(character) {
                     dwordleGrid[row][cellIndex].evalation = .included
                 } else {
                     dwordleGrid[row][cellIndex].evalation = .miss
@@ -76,18 +75,18 @@ struct DwordleState: Equatable {
             lost = true
             alert = .init(
                 title: TextState("You Lost!"),
-                message: TextState("The word was:\n\(wordOfTheDay)"),
+                message: TextState("The word was:\n\(guessWord)"),
                 dismissButton: .default(TextState("OK"), action: .send(.cancelTapped))
               )
         }
     }
     
-    mutating func newGame(wordOfTheDay: String) {
+    mutating func newGame(_ guessWord: String = "") {
         row = 0
         column = 0
         lost = false
         solved = false
-        self.wordOfTheDay = wordOfTheDay
+        self.guessWord = guessWord
         self.dwordleGrid = Array(
             repeating: .init(repeating: .init(), count: columns),
             count: rows

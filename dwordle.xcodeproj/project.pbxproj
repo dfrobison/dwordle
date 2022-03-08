@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		91080E1E27D5960B0066C240 /* LineReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91080E1D27D5960B0066C240 /* LineReader.swift */; };
 		918B8C8427D46F020095FA6F /* Zip in Frameworks */ = {isa = PBXBuildFile; productRef = 918B8C8327D46F020095FA6F /* Zip */; };
 		918B8C8627D4731A0095FA6F /* 5LetterWords.zip in Resources */ = {isa = PBXBuildFile; fileRef = 918B8C8527D4731A0095FA6F /* 5LetterWords.zip */; };
 		91B0D8B027CB234E00EEA352 /* dwordleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91B0D8AF27CB234E00EEA352 /* dwordleApp.swift */; };
@@ -31,6 +32,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		91080E1D27D5960B0066C240 /* LineReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineReader.swift; sourceTree = "<group>"; };
 		918B8C8527D4731A0095FA6F /* 5LetterWords.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = 5LetterWords.zip; sourceTree = "<group>"; };
 		91B0D8AC27CB234E00EEA352 /* dwordle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dwordle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		91B0D8AF27CB234E00EEA352 /* dwordleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dwordleApp.swift; sourceTree = "<group>"; };
@@ -66,6 +68,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		91080E1C27D595F90066C240 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				91080E1D27D5960B0066C240 /* LineReader.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
 		918B8C8727D4732F0095FA6F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -93,6 +103,7 @@
 		91B0D8AE27CB234E00EEA352 /* dwordle */ = {
 			isa = PBXGroup;
 			children = (
+				91080E1C27D595F90066C240 /* Utilities */,
 				918B8C8727D4732F0095FA6F /* Resources */,
 				91B0D8E427D064B300EEA352 /* Providers */,
 				91B0D8D327CDBD8700EEA352 /* Extensions */,
@@ -267,6 +278,7 @@
 				91B0D8DB27CDD53300EEA352 /* Array+Extension.swift in Sources */,
 				91B0D8D727CDBF9500EEA352 /* DwordleGridView.swift in Sources */,
 				91B0D8C727CB2E0300EEA352 /* DwordleView.swift in Sources */,
+				91080E1E27D5960B0066C240 /* LineReader.swift in Sources */,
 				91B0D8CB27CB2ED300EEA352 /* DwordleAction.swift in Sources */,
 				91B0D8DD27CDD57D00EEA352 /* CellEvaluation.swift in Sources */,
 				91B0D8D227CDB98C00EEA352 /* DwordleCellView.swift in Sources */,
