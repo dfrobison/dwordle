@@ -9,6 +9,7 @@ import ComposableArchitecture
 
 struct DwordleState: Equatable {
     typealias KeyEvaluation = [Character : CellEvaluation]
+    
     var alert: AlertState<DwordleAction>?
     let columns: Int
     let rows: Int
@@ -20,8 +21,10 @@ struct DwordleState: Equatable {
     var lost = false
     var solved = false
     
-    var canPlay: Bool {
-        lost == false && solved == false
+    var canPlay: Bool { lost == false && solved == false }
+    
+    private func getWord() -> String {
+        String(dwordleGrid[row].compactMap({ cell in cell.letter }))
     }
     
     init(columns: Int, rows: Int) {
@@ -31,14 +34,21 @@ struct DwordleState: Equatable {
     }
     
     mutating func addLetter(_ letter: Character) {
-        if column < columns {
-            dwordleGrid[row][column].letter = letter
-            column += 1
-        }
+        guard row < rows && column < columns else { return }
+        dwordleGrid[row][column].letter = letter
+        column += 1
     }
     
-    mutating func evaluate() {
+    mutating func evaluate(isValidWord: (String) -> Bool) {
         guard row < rows else { return }
+        guard column == columns else {
+            alertNeedMoreCharacters()
+            return
+        }
+        guard isValidWord(getWord()) else {
+            alertEnterValidWord()
+            return
+        }
         
         for cellIndex in 0..<columns {
             if let character = dwordleGrid[row][cellIndex].letter {
@@ -49,10 +59,10 @@ struct DwordleState: Equatable {
                     dwordleGrid[row][cellIndex].evalation = .included
                     
                     switch keys[character] {
-                        case .none, .some(.miss):
-                            keys[character] = .included
-                        default:
-                            break
+                    case .none, .some(.miss):
+                        keys[character] = .included
+                    default:
+                        break
                     }
                 } else {
                     dwordleGrid[row][cellIndex].evalation = .miss
@@ -69,8 +79,18 @@ struct DwordleState: Equatable {
         column = 0
     }
     
+    mutating func alertNeedMoreCharacters() {
+        alert = .init( title: TextState("Please enter \(columns - column) more charaters"),
+                       dismissButton: .default(TextState("OK"), action: .send(.cancelTapped)))
+    }
+    
+    mutating func alertEnterValidWord() {
+        alert = .init( title: TextState("Please enter a valid word"),
+                       dismissButton: .default(TextState("OK"), action: .send(.cancelTapped)))
+    }
+
     mutating func backspace() {
-        guard column > 0 else { return }
+        guard row < rows && column > 0 else { return }
         
         column -= 1
         dwordleGrid[row][column].letter = nil

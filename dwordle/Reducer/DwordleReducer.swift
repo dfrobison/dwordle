@@ -14,7 +14,7 @@ let dwordleReducer = Reducer<DwordleState, DwordleAction, DwordleEnvironment> { 
             state.addLetter(letter)
             return .none
         case .evaluate:
-            state.evaluate()
+            state.evaluate(isValidWord: environment.wordProvider.isWord)
             return .none
         case .backspace:
             state.backspace()
