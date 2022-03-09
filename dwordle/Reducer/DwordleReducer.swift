@@ -13,8 +13,14 @@ let dwordleReducer = Reducer<DwordleState, DwordleAction, DwordleEnvironment> { 
         case let .addLetter(letter):
             state.addLetter(letter)
             return .none
+        case .nextRow:
+            state.nextRow()
+            return .none
+        case .validateWord:
+            state.validateWord(isValidWord: environment.wordProvider.isWord)
+            return .none
         case .evaluate:
-            state.evaluate(isValidWord: environment.wordProvider.isWord)
+            state.evaluate()
             return .none
         case .backspace:
             state.backspace()

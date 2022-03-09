@@ -30,7 +30,7 @@ struct DwordleKeyboardRowView<LeftView: View, RightView: View> : View {
     let sendKey: (Character) -> Void
     @ViewBuilder let leftView: LeftView
     @ViewBuilder let rightView: RightView
-
+    
     
     var body: some View {
         HStack {
@@ -48,14 +48,33 @@ struct DwordleKeyboardRowView<LeftView: View, RightView: View> : View {
 
 struct DwordleKeyboardView: View {
     @ObservedObject var viewStore: ViewStore<DwordleState, DwordleAction>
-
+    @Binding var degrees: CGFloat
+    
     var body: some View {
         VStack {
             createKeyRow("QWERTYUIOP")
             createKeyRow("ASDFGHJKL")
             createKeyRow("ZXCVBNM") {
                 Button("Enter") {
-                    viewStore.send(.evaluate)
+                    
+                    // Make sure that there is actually a valid word
+                    viewStore.send(.validateWord)
+                    
+                    if viewStore.isValidatedWord {
+                        // Now verify that it's the game word
+                        withAnimation {
+                            degrees = 89
+                            
+                            withAnimation(.linear.delay(0.5)) {
+                                degrees = 0
+                                viewStore.send(.evaluate)
+                                
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0){
+                                    viewStore.send(.nextRow)
+                                }
+                            }
+                        }
+                    }
                 }
                 .dwordleKeyStyle(width: 50)
                 

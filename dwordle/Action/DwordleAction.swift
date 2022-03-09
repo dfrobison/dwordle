@@ -12,4 +12,6 @@ enum DwordleAction: Equatable {
     case newGame
     case cancelTapped
     case onAppear
+    case nextRow
+    case validateWord
 }

@@ -20,7 +20,7 @@ struct DwordleState: Equatable {
     var dwordleGrid: [[DwordleCell]] = [[]]
     var lost = false
     var solved = false
-    
+    var isValidatedWord = false
     var canPlay: Bool { lost == false && solved == false }
     
     private func getWord() -> String {
@@ -39,16 +39,24 @@ struct DwordleState: Equatable {
         column += 1
     }
     
-    mutating func evaluate(isValidWord: (String) -> Bool) {
-        guard row < rows else { return }
+    mutating func validateWord(isValidWord: (String) -> Bool) {
+        isValidatedWord = false
+        
         guard column == columns else {
             alertNeedMoreCharacters()
             return
         }
+        
         guard isValidWord(getWord()) else {
             alertEnterValidWord()
             return
         }
+        
+        isValidatedWord = true
+    }
+    
+    mutating func evaluate() {
+        guard row < rows && isValidatedWord else { return }
         
         for cellIndex in 0..<columns {
             if let character = dwordleGrid[row][cellIndex].letter {
@@ -75,8 +83,14 @@ struct DwordleState: Equatable {
         }
         
         checkWinOrLose(dwordleGrid[row].map { $0.evalation ?? .miss })
+    }
+    
+    mutating func nextRow() {
+        guard row < rows && isValidatedWord else { return }
+        
         row += 1
         column = 0
+        isValidatedWord = false
     }
     
     mutating func alertNeedMoreCharacters() {
