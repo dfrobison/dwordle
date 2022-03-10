@@ -22,7 +22,7 @@ struct DwordleState: Equatable {
     var dwordleGrid: [[DwordleCell]] = [[]]
     var lost = false
     var solved = false
-    var startTimer = false
+    var timerStarted = false
     var isValidatedWord = false
     var canPlay: Bool { lost == false && solved == false }
     var duration: TimeInterval = 0
@@ -41,7 +41,7 @@ struct DwordleState: Equatable {
         guard row < rows && column < columns else { return }
         dwordleGrid[row][column].letter = letter
         column += 1
-        startTimer = true
+        timerStarted = true
     }
     
     mutating func validateWord(isValidWord: (String) -> Bool) {
@@ -136,7 +136,7 @@ struct DwordleState: Equatable {
     
     mutating func newGame(_ guessWord: String = "") {
         duration = 0
-        startTimer = false
+        timerStarted = false
         keys = [:]
         row = 0
         column = 0

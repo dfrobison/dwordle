@@ -12,9 +12,9 @@ let dwordleReducer = Reducer<DwordleState, DwordleAction, DwordleEnvironment> { 
     
     switch action {
         case let .addLetter(letter):
-            let startTimer = state.startTimer
+            let timerStarted = state.timerStarted
             state.addLetter(letter)
-            return startTimer ? .none : Effect(value: .startTimer)
+            return timerStarted ? .none : Effect(value: .startTimer)
             
         case .nextRow:
             state.nextRow()
