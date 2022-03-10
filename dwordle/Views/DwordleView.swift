@@ -8,9 +8,6 @@
 import SwiftUI
 import ComposableArchitecture
 
-
-
-
 struct DwordleView: View {
     let store: Store<DwordleState, DwordleAction>
     @ObservedObject var viewStore: ViewStore<DwordleState, DwordleAction>
@@ -24,9 +21,11 @@ struct DwordleView: View {
     var body: some View {
         ZStack {
             Color(.systemGray6)
-            .ignoresSafeArea()
+                .ignoresSafeArea()
             
             VStack {
+                DwordleScoreView(store: store)
+                
                 DwordleGridView(
                     width: viewStore.columns,
                     height: viewStore.rows,
@@ -67,7 +66,7 @@ struct DwordleView_Previews: PreviewProvider {
     static var previews: some View {
         DwordleView( store: Store(initialState: DwordleState(columns: 5, rows: 6),
                                   reducer: dwordleReducer,
-                                  environment: DwordleEnvironment(wordProvider: WordProvider())))
+                                  environment: DwordleEnvironment(wordProvider: WordProvider(), mainRunLoop: .main)))
     }
 }
 

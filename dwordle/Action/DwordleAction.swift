@@ -14,4 +14,6 @@ enum DwordleAction: Equatable {
     case onAppear
     case nextRow
     case validateWord
+    case timerUpdate
+    case startTimer
 }

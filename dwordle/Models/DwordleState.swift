@@ -13,6 +13,8 @@ struct DwordleState: Equatable {
     var alert: AlertState<DwordleAction>?
     let columns: Int
     let rows: Int
+    var wins = 0
+    var loses = 0
     var row = 0
     var column = 0
     var guessWord = ""
@@ -20,8 +22,10 @@ struct DwordleState: Equatable {
     var dwordleGrid: [[DwordleCell]] = [[]]
     var lost = false
     var solved = false
+    var startTimer = false
     var isValidatedWord = false
     var canPlay: Bool { lost == false && solved == false }
+    var duration: TimeInterval = 0
     
     private func getWord() -> String {
         String(dwordleGrid[row].compactMap({ cell in cell.letter }))
@@ -37,6 +41,7 @@ struct DwordleState: Equatable {
         guard row < rows && column < columns else { return }
         dwordleGrid[row][column].letter = letter
         column += 1
+        startTimer = true
     }
     
     mutating func validateWord(isValidWord: (String) -> Bool) {
@@ -112,12 +117,14 @@ struct DwordleState: Equatable {
     
     mutating func checkWinOrLose(_ rowEvaluation: [CellEvaluation]) {
         if rowEvaluation.solved {
+            wins += 1
             solved = true
             alert = .init(
                 title: TextState("You Won! 🎉🎉🎉🎉"),
                 dismissButton: .default(TextState("OK"), action: .send(.cancelTapped))
             )
         } else if row == rows - 1 {
+            loses += 1
             lost = true
             alert = .init(
                 title: TextState("You Lost!"),
@@ -128,6 +135,9 @@ struct DwordleState: Equatable {
     }
     
     mutating func newGame(_ guessWord: String = "") {
+        duration = 0
+        startTimer = false
+        keys = [:]
         row = 0
         column = 0
         lost = false
