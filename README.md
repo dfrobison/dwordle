@@ -1,2 +1,3 @@
-# dwordle
-My spin on the Wordle game using SwiftUI and the Composible Architecture. Good inspiration from: https://quickbirdstudios.com/blog/wordle-game-swiftui/ 
+# dWordle
+My spin on the Wordle game using SwiftUI and the Composible Architecture. As with all things, this is meant as a learning exercise for me -- but having some fun in the process. Good inspiration from: https://quickbirdstudios.com/blog/wordle-game-swiftui/ 
+![](/dwordle.png)
